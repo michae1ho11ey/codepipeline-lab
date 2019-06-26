@@ -2,8 +2,9 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Parameters:
   BucketNameParameter:
-    Type: String
     Description: S3 Bucket Name
+    Type: String
+    Default: mh-lab121-nested
 
 Resources:
   S3Bucket:
