@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Validating template...
+      - aws cloudformation validate-template --template-body pipeline.yaml
