@@ -5,5 +5,10 @@ phases:
     runtime-versions:
       python: 3.7
     commands:
-      - echo Checking template health...
+      - echo 'Installing aws tools'
+      - pip3 install awscli --upgrade --user
+   test:
+    commands:
+      - echo 'Checking template health...'
+      - echo $STACK_NAME
       - aws cloudformation describe-stacks --stack-name $STACK_NAME --query Stacks[].StackStatus
