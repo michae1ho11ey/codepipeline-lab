@@ -6,5 +6,4 @@ phases:
       python: 3.7
     commands:
       - echo Validating template...
-      - ls
-      - aws cloudformation validate-template --template-body pipeline.yaml
+      - aws cloudformation validate-template --template-body bucket.yaml
