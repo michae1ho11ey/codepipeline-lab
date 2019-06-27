@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create a DynamoDB table and access role
+
+Parameters:
+  InventoryTableName:
+    Description: DynamoDB table name
+    Type: String
+    Default: mh-lab122-inventory
+
+Resources:
+  DynamoAccess:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          -
+            Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+
+  InventoryDB:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: ID
+        AttributeType: N
+      KeySchema:
+      - AttributeName: ID
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: !Ref InventoryTableName
+
+Outputs:
+  DBRole:
+    Value: !Ref DynamoAccess
+    Export:
+      Name: mh-lab122-db-role-name
+  DBRoleArn:
+    Value: !GetAtt DynamoAccess.Arn
+    Export:
+      Name: mh-lab122-db-role-arn
+
