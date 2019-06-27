@@ -7,7 +7,7 @@ phases:
     commands:
       - echo 'Installing aws tools'
       - pip3 install awscli --upgrade --user
-  test:
+  build:
     commands:
       - echo 'Checking template health...'
       - echo $STACK_NAME
