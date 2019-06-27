@@ -6,7 +6,7 @@ phases:
       python: 3.7
     commands:
       - echo 'Installing aws tools'
-      - install awscli --upgrade --user
+      - pip3 install awscli --upgrade --user
   build:
     commands:
       - echo Validating template...
