@@ -10,4 +10,4 @@ phases:
   build:
     commands:
       - echo Validating template...
-      - aws cloudformation validate-template --template-body bucket.yaml
+      - aws cloudformation validate-template --template-body file://bucket.yaml
